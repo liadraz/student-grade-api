@@ -17,7 +17,7 @@ Build a backend system that provides:
 
 ## 🛠️ Stack & Tools
 
-- **.NET 8**, MVC (Controllers), REST API
+- **.NET 8**, Controllers, REST API
 - **PostgreSQL** with **Entity Framework Core** (ORM)
 - **Docker** for containerization
 - **Swagger** / **Postman** for testing and documentation
