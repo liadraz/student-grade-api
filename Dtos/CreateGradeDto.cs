@@ -4,7 +4,8 @@ namespace student_grades_api.Dtos;
 
 public class CreateGradeDto
 {
-    [Required][StringLength(40)]
+    [Required]
+    [StringLength(40)]
     public string Subject { get; set; } = string.Empty;
 
     [Range(0, 100)]
