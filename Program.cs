@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using student_grades_api.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -8,8 +9,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var connString = builder.Configuration.GetConnectionString("studentGrades");
-
-builder.Services.AddDbContext<DbContext>(options =>
+builder.Services.AddDbContext<StudentGradesContext>(options =>
     options.UseNpgsql(connString));
 
 var app = builder.Build();
