@@ -1,0 +1,19 @@
+@hostAddress = http://localhost:5255
+
+###
+
+GET http://localhost:5255/students
+
+###
+
+GET http://localhost:5255/students/1
+
+###
+
+POST http://localhost:5255/students/
+Content-Type: application/json
+
+{
+    "fullName": "Biscuit Raz",
+    "phone": "0524512272"
+}
