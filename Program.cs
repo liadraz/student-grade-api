@@ -30,5 +30,10 @@ if (app.Environment.IsDevelopment())
 // Route incoming HTTP requests to controllers using their [Route] attributes
 app.MapControllers();
 
+using (var scope = app.Services.CreateScope())
+{
+    var db = scope.ServiceProvider.GetRequiredService<StudentGradesContext>();
+    DBInitializer.SeedGradesData(db);
+}
 
 app.Run();
