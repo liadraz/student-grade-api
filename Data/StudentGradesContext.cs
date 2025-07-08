@@ -25,6 +25,6 @@ public class StudentGradesContext : DbContext
         builder.Entity<Student>()
             .HasIndex(s => s.Phone)
             .IsUnique();
-            // .HasFilter("Phone IS NOT NULL");
+        // .HasFilter("Phone IS NOT NULL");
     }
 }
