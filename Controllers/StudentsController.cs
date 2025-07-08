@@ -20,11 +20,21 @@ public class StudentsController : ControllerBase
     }
 
     [HttpGet]
-    public ActionResult<List<StudentSummaryDto>> GetAll()
+    public ActionResult<List<StudentSummaryDto>> GetAll([FromQuery] double? minAverage)
     {
-        var students = _context.Students
+        var studentsQuery = _context.Students
             .Include(student => student.Grades)
             .AsNoTracking()
+            .AsQueryable();
+
+        if (minAverage.HasValue)
+        {
+            studentsQuery = studentsQuery
+                .Where(student => student.Grades.Any())
+                .Where(student => student.Grades.Average(grade => grade.Score) >= minAverage.Value);
+        }
+
+        var students = studentsQuery
             .Select(student => StudentMapping.ToSummaryDto(student))
             .ToList();
 

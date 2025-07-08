@@ -13,11 +13,17 @@ public static class StudentMapping
             FullName = student.FullName,
             Phone = student.Phone,
             CreateAt = student.CreateAt,
+
             Grades = student.Grades.Select(grade => new GradeDto()
             {
                 Subject = grade.Subject,
                 Score = grade.Score
-            }).ToList() ?? new List<GradeDto>()
+            }).ToList() ?? new List<GradeDto>(),
+
+            AverageScore = student.Grades
+                .Select(g => g.Score)
+                .DefaultIfEmpty(0)
+                .Average()
         };
     }
 
@@ -29,11 +35,17 @@ public static class StudentMapping
             FullName = student.FullName,
             Phone = student.Phone,
             CreateAt = student.CreateAt,
+
             Grades = student.Grades.Select(grade => new GradeDto()
             {
                 Subject = grade.Subject,
                 Score = grade.Score
-            }).ToList() ?? new List<GradeDto>()
+            }).ToList() ?? new List<GradeDto>(),
+
+            AverageScore = student.Grades
+                .Select(g => g.Score)
+                .DefaultIfEmpty(0)
+                .Average()
         };
     }
 
