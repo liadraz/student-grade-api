@@ -20,7 +20,12 @@ public class StudentsController : ControllerBase
     }
 
     [HttpGet]
-    public ActionResult<List<StudentSummaryDto>> GetAll([FromQuery] double? minAverage)
+    public ActionResult<List<StudentSummaryDto>> GetAll(
+        [FromQuery] double? minAverage,
+        [FromQuery] string sortBy = "fullname",
+        [FromQuery] string sortDir = "asc",
+        [FromQuery] int pageNumber = 1,
+        [FromQuery] int pageSize = 10)
     {
         var studentsQuery = _context.Students
             .Include(student => student.Grades)
@@ -33,6 +38,24 @@ public class StudentsController : ControllerBase
                 .Where(student => student.Grades.Any())
                 .Where(student => student.Grades.Average(grade => grade.Score) >= minAverage.Value);
         }
+
+        switch (sortBy.ToLower())
+        {
+            case "average":
+                studentsQuery = sortDir.ToLower() == "desc"
+                    ? studentsQuery.OrderByDescending(s => s.Grades.Select(g => g.Score).DefaultIfEmpty(0).Average())
+                    : studentsQuery.OrderBy(s => s.Grades.Select(g => g.Score).DefaultIfEmpty(0).Average());
+                break;
+            case "fullname":
+                studentsQuery = sortDir.ToLower() == "desc"
+                    ? studentsQuery.OrderByDescending(student => student.FullName)
+                    : studentsQuery.OrderBy(student => student.FullName);
+                break;
+        }
+
+        studentsQuery = studentsQuery
+            .Skip((pageNumber - 1) * pageSize)
+            .Take(pageSize);
 
         var students = studentsQuery
             .Select(student => StudentMapping.ToSummaryDto(student))
