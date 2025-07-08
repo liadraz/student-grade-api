@@ -7,4 +7,5 @@ public class StudentSummaryDto
     public string? Phone { get; set; }
     public DateTime CreateAt { get; set; }
     public double AverageScore { get; set; }
+    public List<GradeDto> Grades { get; set; } = new List<GradeDto>();
 }

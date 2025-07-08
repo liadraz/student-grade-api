@@ -8,7 +8,7 @@ A RESTful backend service built with .NET for managing students and their grades
 
 Build a backend system that provides:
 
-- CRUD operations for **Students** and **Grades**
+- CRUD operations for **Students**
 - Retrieval of students with their associated grades
 - Filtering by **minimum average score**
 - Support for **sorting**, **pagination**, and **search**
