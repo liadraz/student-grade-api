@@ -5,14 +5,14 @@ namespace student_grades_api.Data;
 
 public static class DBInitializer
 {
-    public static void SeedGradesData(StudentGradesContext context)
+    public static async Task SeedDataAsync(StudentGradesContext context)
     {
         if (context.Grades.Any())
         {
             return;
         }
 
-        context.Grades.AddRange(new List<Grade>
+        await context.Grades.AddRangeAsync(new List<Grade>
         {
             new Grade { Subject = "Math", Score = 85, StudentId = 1 },
             new Grade { Subject = "English", Score = 78, StudentId = 1 },
@@ -27,6 +27,6 @@ public static class DBInitializer
             new Grade { Subject = "Science", Score = 89, StudentId = 3 }
         });
 
-        context.SaveChanges();
+        await context.SaveChangesAsync();
     }
 }

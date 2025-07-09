@@ -20,7 +20,7 @@ public class StudentsController : ControllerBase
     }
 
     [HttpGet]
-    public ActionResult<List<StudentSummaryDto>> GetAll(
+    public async Task<ActionResult<List<StudentSummaryDto>>> GetAll(
         [FromQuery] double? minAverage,
         [FromQuery] string sortBy = "fullname",
         [FromQuery] string sortDir = "asc",
@@ -57,29 +57,29 @@ public class StudentsController : ControllerBase
             .Skip((pageNumber - 1) * pageSize)
             .Take(pageSize);
 
-        var students = studentsQuery
+        var students = await studentsQuery
             .Select(student => StudentMapping.ToSummaryDto(student))
-            .ToList();
+            .ToListAsync();
 
         return Ok(students);
     }
 
     [HttpGet("{id}")]
-    public ActionResult<StudentDetailsDto> GetById(int id)
+    public async Task<ActionResult<StudentDetailsDto>> GetById(int id)
     {
-        Student? student = _context.Students.Find(id);
+        Student? student = await _context.Students.FindAsync(id);
 
         return student is null ?
             NotFound() : Ok(StudentMapping.ToDetailsDto(student));
     }
 
     [HttpPost]
-    public ActionResult<StudentDetailsDto> Create(CreateStudentDto newStudent)
+    public async Task<ActionResult<StudentDetailsDto>> Create(CreateStudentDto newStudent)
     {
         var student = StudentMapping.ToEntity(newStudent);
 
         _context.Students.Add(student);
-        _context.SaveChanges();
+        await _context.SaveChangesAsync();
 
         var result = StudentMapping.ToDetailsDto(student);
 
@@ -87,25 +87,25 @@ public class StudentsController : ControllerBase
     }
 
     [HttpPut("{id}")]
-    public ActionResult Update(int id, UpdateStudentDto updateStudent)
+    public async Task<ActionResult> Update(int id, UpdateStudentDto updateStudent)
     {
-        Student? student = _context.Students.Find(id);
+        Student? student = await _context.Students.FindAsync(id);
         if (student is null) return NotFound();
 
         StudentMapping.UpdateEntity(student, updateStudent);
-        _context.SaveChanges();
+        await _context.SaveChangesAsync();
 
         return NoContent();
     }
 
     [HttpDelete("{id}")]
-    public ActionResult Delete(int id)
+    public async Task<ActionResult> Delete(int id)
     {
-        Student? student = _context.Students.Find(id);
+        Student? student = await _context.Students.FindAsync(id);
         if (student is null) return NotFound();
 
         _context.Students.Remove(student);
-        _context.SaveChanges();
+        await _context.SaveChangesAsync();
 
         return NoContent();
     }
