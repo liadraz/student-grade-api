@@ -1,4 +1,4 @@
-# Student Grades Management API
+# Student Management API
 
 A backend system built with ASP.NET Core that allows managing students and their grades. The system supports CRUD operations, filtering, sorting, and pagination, and is containerized for easy deployment.
 
@@ -26,7 +26,7 @@ A backend system built with ASP.NET Core that allows managing students and their
 
 ---
 
-## Setup Instructions
+## Setup
 
 1. **Clone the repository**
 
@@ -51,17 +51,18 @@ A backend system built with ASP.NET Core that allows managing students and their
 
 ---
 
-## Development Concepts Covered
+### Development Concepts Covered
 
-* Built a RESTful API using ASP.NET Core (.NET 8) and Controllers
-* Implemented HTTP methods for CRUD operations (GET, POST, PUT, DELETE)
-* Designed clean and intuitive API routes
-* Used query parameters for filtering (by average), sorting, and pagination
-* Separated concerns using DTOs and entity mapping
-* Applied validation using data annotations and model state checking
-* Added centralized error handling and proper HTTP responses
-* Applied asynchronous programming for scalability (async/await)
-* Used dependency injection for managing services and database context
-* Persisted data using EF Core with PostgreSQL
-* Containerized the app using Docker and configured with Docker Compose
-* Integrated Swagger for API documentation and testing
+- Built a **RESTful API** with **ASP.NET Core (.NET 8)** using **Controllers**
+- Implemented **CRUD operations** via HTTP methods: GET, POST, PUT, DELETE
+- Designed clean, intuitive **API routes** with query parameters
+- Enabled **filtering** (by average score), **sorting**, and **pagination**
+- Used **DTOs** and **entity mapping** to separate concerns
+- Applied **validation** with data annotations and model state checks
+- Implemented **centralized error handling** with appropriate HTTP responses
+- Followed **asynchronous programming** best practices (`async/await`)
+- Used **dependency injection** to manage services and DbContext
+- Persisted data with **Entity Framework Core** and **PostgreSQL**
+- **Containerized** the application using **Docker** and **Docker Compose**
+- Integrated **Swagger** for API testing and interactive documentation
+
