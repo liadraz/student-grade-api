@@ -20,12 +20,9 @@ builder.Services.AddDbContext<StudentGradesContext>(options =>
 
 var app = builder.Build();
 
-// Middleware pipeline - register Swagger and its UI middleware that intercept requests to /swagger
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+// Register Swagger and its UI middleware that intercept requests to /swagger
+app.UseSwagger();
+app.UseSwaggerUI();
 
 // Route incoming HTTP requests to controllers using their [Route] attributes
 app.MapControllers();
