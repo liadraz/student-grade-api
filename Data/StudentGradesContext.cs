@@ -26,10 +26,26 @@ public class StudentGradesContext : DbContext
             .HasIndex(s => s.Phone)
             .IsUnique();
 
+        DateTime createdAt = new DateTime(2025, 7, 9, 0, 0, 0, DateTimeKind.Utc);
+
         builder.Entity<Student>().HasData(
-            new Student { Id = 1, FullName = "Liad Raz", Phone = "0555912051" },
-            new Student { Id = 2, FullName = "Yoav Elad", Phone = "0555912281" },
-            new Student { Id = 3, FullName = "Biscuit Potato", Phone = "0585917051" }
+            new Student {
+                Id = 1,
+                FullName = "Liad Raz",
+                Phone = "0555912051",
+                CreateAt = createdAt},
+            new Student
+            {
+                Id = 2,
+                FullName = "Yoav Elad",
+                Phone = "0555912281",
+                CreateAt = createdAt},
+            new Student
+            {
+                Id = 3,
+                FullName = "Biscuit Potato",
+                Phone = "0585917051",
+                CreateAt = createdAt}
         );
 
         builder.Entity<Grade>().HasData(

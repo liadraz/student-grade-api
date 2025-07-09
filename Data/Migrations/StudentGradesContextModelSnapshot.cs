@@ -143,21 +143,21 @@ namespace student_grades_api.Data.Migrations
                         new
                         {
                             Id = 1,
-                            CreateAt = new DateTime(2025, 7, 9, 7, 33, 39, 810, DateTimeKind.Utc).AddTicks(5447),
+                            CreateAt = new DateTime(2025, 7, 9, 0, 0, 0, 0, DateTimeKind.Utc),
                             FullName = "Liad Raz",
                             Phone = "0555912051"
                         },
                         new
                         {
                             Id = 2,
-                            CreateAt = new DateTime(2025, 7, 9, 7, 33, 39, 810, DateTimeKind.Utc).AddTicks(6440),
+                            CreateAt = new DateTime(2025, 7, 9, 0, 0, 0, 0, DateTimeKind.Utc),
                             FullName = "Yoav Elad",
                             Phone = "0555912281"
                         },
                         new
                         {
                             Id = 3,
-                            CreateAt = new DateTime(2025, 7, 9, 7, 33, 39, 810, DateTimeKind.Utc).AddTicks(6443),
+                            CreateAt = new DateTime(2025, 7, 9, 0, 0, 0, 0, DateTimeKind.Utc),
                             FullName = "Biscuit Potato",
                             Phone = "0585917051"
                         });

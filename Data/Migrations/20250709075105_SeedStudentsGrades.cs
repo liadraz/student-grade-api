@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace student_grades_api.Data.Migrations
 {
     /// <inheritdoc />
-    public partial class SeedStudentsNGrades : Migration
+    public partial class SeedStudentsGrades : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -18,9 +18,9 @@ namespace student_grades_api.Data.Migrations
                 columns: new[] { "Id", "CreateAt", "FullName", "Phone" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(2025, 7, 9, 7, 33, 39, 810, DateTimeKind.Utc).AddTicks(5447), "Liad Raz", "0555912051" },
-                    { 2, new DateTime(2025, 7, 9, 7, 33, 39, 810, DateTimeKind.Utc).AddTicks(6440), "Yoav Elad", "0555912281" },
-                    { 3, new DateTime(2025, 7, 9, 7, 33, 39, 810, DateTimeKind.Utc).AddTicks(6443), "Biscuit Potato", "0585917051" }
+                    { 1, new DateTime(2025, 7, 9, 0, 0, 0, 0, DateTimeKind.Utc), "Liad Raz", "0555912051" },
+                    { 2, new DateTime(2025, 7, 9, 0, 0, 0, 0, DateTimeKind.Utc), "Yoav Elad", "0555912281" },
+                    { 3, new DateTime(2025, 7, 9, 0, 0, 0, 0, DateTimeKind.Utc), "Biscuit Potato", "0585917051" }
                 });
 
             migrationBuilder.InsertData(
