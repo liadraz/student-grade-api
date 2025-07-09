@@ -26,7 +26,7 @@ A backend system built with ASP.NET Core that allows managing students and their
 
 ---
 
-## Setup
+## Setup Instructions
 
 1. **Clone the repository**
 
@@ -48,6 +48,28 @@ A backend system built with ASP.NET Core that allows managing students and their
    ```
    http://localhost:5000/swagger
    ```
+---
+
+### Endpoints
+
+
+| Action         | HTTP Method | Route               | Description                      |
+|----------------|-------------|---------------------|----------------------------------|
+| Create Student | `POST`      | `/students`         | Add a new student with optional grades |
+| Get All        | `GET`       | `/students`         | Retrieve a list of students with optional filtering by average grade, sorting, and pagination |
+| Get by ID      | `GET`       | `/students/{id}`    | Retrieve a single student with their grades by unique ID |
+| Update         | `PUT`       | `/students/{id}`    | Update a student's basic info and grades |
+| Delete         | `DELETE`    | `/students/{id}`    | Remove a student and their associated grades |
+
+#### Example Use Case
+
+A client application can use this API to:
+
+1. Register new students and assign them grades.
+2. Display a paginated list of students, sorted by name or average score.
+3. Filter students based on a minimum average score to show top performers.
+4. View detailed grade breakdown for an individual student.
+5. Edit or remove student records as needed.
 
 ---
 
