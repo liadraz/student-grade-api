@@ -11,4 +11,6 @@ public class UpdateStudentDto
 
     [StringLength(12)]
     public string? Phone { get; set; } 
+
+    public List<GradeDto> Grades{ get; set; } = new List<GradeDto>();
 }

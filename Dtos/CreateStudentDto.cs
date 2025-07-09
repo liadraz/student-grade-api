@@ -10,5 +10,7 @@ public class CreateStudentDto
     public string FullName { get; set; } = string.Empty;
 
     [StringLength(12)]
-    public string? Phone { get; set; } 
+    public string? Phone { get; set; }
+
+    public List<GradeDto> Grades { get; set; } = new List<GradeDto>();
 }

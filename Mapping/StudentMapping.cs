@@ -55,12 +55,17 @@ public static class StudentMapping
         {
             FullName = student.FullName,
             Phone = student.Phone,
+            Grades = student.Grades.Select(g => new Grade()
+            {
+                Subject = g.Subject,
+                Score = g.Score
+            }).ToList()
         };
     }
 
-    public static void UpdateEntity(Student student, UpdateStudentDto updateStudent)
+    public static void UpdateEntity(Student student, UpdateStudentDto update)
     {
-        student.FullName = updateStudent.FullName;
-        student.Phone = updateStudent.Phone;
+        student.FullName = update.FullName;
+        student.Phone = update.Phone;
     }
 }

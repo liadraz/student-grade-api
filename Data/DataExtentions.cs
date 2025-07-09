@@ -10,6 +10,8 @@ public static class DataExtensions
         using var scope = app.Services.CreateScope();
         var context = scope.ServiceProvider.GetRequiredService<StudentGradesContext>();
 
-        await context.Database.MigrateAsync();  // equivalent to `dotnet ef database update`
+        // equivalent to `dotnet ef database update`. 
+        // This line will run when there is a new migration
+        await context.Database.MigrateAsync();  
     }
 }

@@ -28,6 +28,7 @@ public class StudentGradesContext : DbContext
 
         DateTime createdAt = new DateTime(2025, 7, 9, 0, 0, 0, DateTimeKind.Utc);
 
+        // Occurs only once when building migration `dotnet ef migrations add StudentSeed`
         builder.Entity<Student>().HasData(
             new Student {
                 Id = 1,

@@ -67,7 +67,10 @@ public class StudentsController : ControllerBase
     [HttpGet("{id}")]
     public async Task<ActionResult<StudentDetailsDto>> GetById(int id)
     {
-        Student? student = await _context.Students.FindAsync(id);
+        Student? student = await _context.Students
+        .Include(student => student.Grades)
+        .AsNoTracking()
+        .FirstOrDefaultAsync(student => student.Id == id);
 
         return student is null ?
             NotFound() : Ok(StudentMapping.ToDetailsDto(student));
