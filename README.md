@@ -1,4 +1,4 @@
-# Student Management API
+# Student Records API
 
 A backend system built with ASP.NET Core that allows managing students and their grades. The system supports CRUD operations, filtering, sorting, and pagination, and is containerized for easy deployment.
 
